@@ -1,9 +1,20 @@
-import React from "react";
+import gsap from "gsap";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 export default function MainInfo() {
+  const infoRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      infoRef.current!,
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 0.7, delay: 0.2 }
+    );
+  }, []);
+
   return (
-    <div>
+    <div ref={infoRef}>
       <StyledMainInfoText>
         <strong>700만 명</strong>의 여행자
       </StyledMainInfoText>
