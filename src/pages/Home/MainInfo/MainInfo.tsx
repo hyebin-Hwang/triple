@@ -1,28 +1,28 @@
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import useCountUp from "../../../hooks/useCountUp";
+import useOpacityAnimation from "../../../hooks/useOpacityAnimation";
 
 export default function MainInfo() {
   const infoRef = useRef(null);
 
-  useEffect(() => {
-    gsap.fromTo(
-      infoRef.current!,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.7, delay: 0.2 }
-    );
-  }, []);
+  const travelerCount = useCountUp(2, 350, 345);
+  const reviewCount = useCountUp(2, 21, 18);
+  const scheduleCount = useCountUp(2, 650, 643);
+
+  useOpacityAnimation({ element: infoRef, duration: 0.7, delay: 0.2 });
 
   return (
     <div ref={infoRef}>
       <StyledMainInfoText>
-        <strong>700만 명</strong>의 여행자
+        <strong>{travelerCount}만 명</strong>의 사용자
       </StyledMainInfoText>
       <StyledMainInfoText>
-        <strong>100만 개</strong>의 여행 리뷰
+        <strong>{reviewCount}만 개</strong>의 리뷰
       </StyledMainInfoText>
       <StyledMainInfoText>
-        <strong>470만 개</strong>의 여행 일정
+        <strong>{scheduleCount}만 개</strong>의 저장
       </StyledMainInfoText>
     </div>
   );
