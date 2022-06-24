@@ -1,19 +1,14 @@
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import useOpacityAnimation from "../../hooks/useOpacityAnimation";
 import MainAwards from "./MainAwards/MainAwards";
 import MainInfo from "./MainInfo/MainInfo";
 
 export default function Home() {
   const imgWrapperRef = useRef(null);
 
-  useEffect(() => {
-    gsap.fromTo(
-      imgWrapperRef.current!,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.7, delay: 0.1 }
-    );
-  }, []);
+  useOpacityAnimation({ element: imgWrapperRef, duration: 0.7, delay: 0.1 });
 
   return (
     <StyledHomeContainer>

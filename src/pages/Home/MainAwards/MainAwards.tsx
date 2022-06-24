@@ -1,6 +1,7 @@
 import gsap from "gsap";
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useRef } from "react";
 import styled from "styled-components";
+import useOpacityAnimation from "../../../hooks/useOpacityAnimation";
 
 type MainAwardsListType = {
   children: ReactNode;
@@ -11,13 +12,7 @@ type MainAwardsListType = {
 export default function MainAwards() {
   const awardsRef = useRef(null);
 
-  useEffect(() => {
-    gsap.fromTo(
-      awardsRef.current!,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.7, delay: 0.3 }
-    );
-  }, []);
+  useOpacityAnimation({ element: awardsRef, duration: 0.7, delay: 0.3 });
 
   return (
     <StyledMainAwardsContainer ref={awardsRef}>
