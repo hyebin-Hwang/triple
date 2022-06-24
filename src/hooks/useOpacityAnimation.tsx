@@ -1,11 +1,11 @@
-import React, { MutableRefObject, useEffect } from "react";
-import gsap from "gsap";
+import { MutableRefObject, useEffect } from 'react'
+import gsap from 'gsap'
 
-type UseOpacityAnimationType = {
-  element: MutableRefObject<null>;
-  delay: number;
-  duration: number;
-};
+interface UseOpacityAnimationType {
+  element: MutableRefObject<null>
+  delay: number
+  duration: number
+}
 
 export default function useOpacityAnimation({
   element,
@@ -16,10 +16,10 @@ export default function useOpacityAnimation({
     const opacityAnimation = gsap.fromTo(
       element.current,
       { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration, delay }
-    );
+      { opacity: 1, y: 0, duration, delay },
+    )
     return () => {
-      opacityAnimation.kill();
-    };
-  }, []);
+      opacityAnimation.kill()
+    }
+  }, [])
 }

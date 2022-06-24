@@ -1,17 +1,26 @@
-import gsap from "gsap";
-import React, { useRef } from "react";
-import styled from "styled-components";
-import useCountUp from "../../../hooks/useCountUp";
-import useOpacityAnimation from "../../../hooks/useOpacityAnimation";
+import { useRef } from 'react'
+import styled from 'styled-components'
+
+import useCountUp from '../../../hooks/useCountUp'
+import useOpacityAnimation from '../../../hooks/useOpacityAnimation'
+
+const StyledMainInfoText = styled.p`
+  font-size: 36px;
+  color: rgb(58, 58, 58);
+  padding-bottom: 10px;
+  strong {
+    font-weight: bold;
+  }
+`
 
 export default function MainInfo() {
-  const infoRef = useRef(null);
+  const infoRef = useRef(null)
 
-  const travelerCount = useCountUp(2, 350, 345);
-  const reviewCount = useCountUp(2, 21, 18);
-  const scheduleCount = useCountUp(2, 650, 643);
+  const travelerCount = useCountUp({ second: 2, end: 350, slowPoint: 345 })
+  const reviewCount = useCountUp({ second: 2, end: 21, slowPoint: 18 })
+  const scheduleCount = useCountUp({ second: 2, end: 650, slowPoint: 643 })
 
-  useOpacityAnimation({ element: infoRef, duration: 0.7, delay: 0.2 });
+  useOpacityAnimation({ element: infoRef, duration: 0.7, delay: 0.2 })
 
   return (
     <div ref={infoRef}>
@@ -25,14 +34,5 @@ export default function MainInfo() {
         <strong>{scheduleCount}만 개</strong>의 저장
       </StyledMainInfoText>
     </div>
-  );
+  )
 }
-
-const StyledMainInfoText = styled.p`
-  font-size: 36px;
-  color: rgb(58, 58, 58);
-  padding-bottom: 10px;
-  strong {
-    font-weight: bold;
-  }
-`;

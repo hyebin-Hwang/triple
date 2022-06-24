@@ -1,45 +1,12 @@
-import gsap from "gsap";
-import React, { ReactNode, useRef } from "react";
-import styled from "styled-components";
-import useOpacityAnimation from "../../../hooks/useOpacityAnimation";
+import { ReactNode, useRef } from 'react'
+import styled from 'styled-components'
 
-type MainAwardsListType = {
-  children: ReactNode;
-  imageName: string;
-  image: string;
-};
+import useOpacityAnimation from '../../../hooks/useOpacityAnimation'
 
-export default function MainAwards() {
-  const awardsRef = useRef(null);
-
-  useOpacityAnimation({ element: awardsRef, duration: 0.7, delay: 0.3 });
-
-  return (
-    <StyledMainAwardsContainer ref={awardsRef}>
-      <MainAwardsList
-        image="image/play-store2x.png"
-        imageName="playstore badge"
-      >
-        <p className="mainAwardsListBadgeInfo">2018 구글 플레이스토어</p>
-        <p>올해의 앱 최우수상 수상</p>
-      </MainAwardsList>
-      <MainAwardsList image="image/badge-apple4x.png" imageName="apple badge">
-        <p className="mainAwardsListBadgeInfo">2018 애플 앱스토어</p>
-        <p>오늘의 여행앱 선정</p>
-      </MainAwardsList>
-    </StyledMainAwardsContainer>
-  );
-}
-
-function MainAwardsList({ image, imageName, children }: MainAwardsListType) {
-  return (
-    <StyledMainAwardsListWrapper>
-      <div className="awardsListImgWrapper">
-        <img src={image} alt={imageName} />
-      </div>
-      <div className="awardsListTextWrapper">{children}</div>
-    </StyledMainAwardsListWrapper>
-  );
+interface MainAwardsListType {
+  children: ReactNode
+  imageName: string
+  image: string
 }
 
 const StyledMainAwardsContainer = styled.div`
@@ -48,7 +15,7 @@ const StyledMainAwardsContainer = styled.div`
   .mainAwardsListBadgeInfo {
     padding-bottom: 3px;
   }
-`;
+`
 
 const StyledMainAwardsListWrapper = styled.div`
   display: flex;
@@ -69,4 +36,37 @@ const StyledMainAwardsListWrapper = styled.div`
     font-weight: bold;
     font-size: 14px;
   }
-`;
+`
+
+export default function MainAwards() {
+  const awardsRef = useRef(null)
+
+  useOpacityAnimation({ element: awardsRef, duration: 0.7, delay: 0.3 })
+
+  return (
+    <StyledMainAwardsContainer ref={awardsRef}>
+      <MainAwardsList
+        image="image/play-store2x.png"
+        imageName="playstore badge"
+      >
+        <p className="mainAwardsListBadgeInfo">2018 구글 플레이스토어</p>
+        <p>올해의 앱 최우수상 수상</p>
+      </MainAwardsList>
+      <MainAwardsList image="image/badge-apple4x.png" imageName="apple badge">
+        <p className="mainAwardsListBadgeInfo">2018 애플 앱스토어</p>
+        <p>오늘의 여행앱 선정</p>
+      </MainAwardsList>
+    </StyledMainAwardsContainer>
+  )
+}
+
+function MainAwardsList({ image, imageName, children }: MainAwardsListType) {
+  return (
+    <StyledMainAwardsListWrapper>
+      <div className="awardsListImgWrapper">
+        <img src={image} alt={imageName} />
+      </div>
+      <div className="awardsListTextWrapper">{children}</div>
+    </StyledMainAwardsListWrapper>
+  )
+}
