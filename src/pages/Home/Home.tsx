@@ -16,9 +16,10 @@ const StyledImgWrapper = styled.div`
 
 const StyledHomeContainer = styled.section`
   display: grid;
-  width: 1040px;
   margin: 100px auto;
-  grid-template-columns: 1fr 0.8fr;
+  width: 1200px;
+  flex-wrap: nowrap;
+  grid-template-columns: 1fr 1fr;
 `
 
 export default function Home() {

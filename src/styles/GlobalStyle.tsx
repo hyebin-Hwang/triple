@@ -17,6 +17,9 @@ const GlobalStyle = createGlobalStyle`
     input{
         outline:none;
     }
+   body{
+    overflow:hidden;
+   }
 `
 
 export default GlobalStyle
