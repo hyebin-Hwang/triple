@@ -11,7 +11,7 @@ export default function useCountUp({ second, end, slowPoint }: UseCountUpType) {
   const requestRef = useRef<number>(0)
   const slowCountRef = useRef<number>(0)
 
-  const SLOWSTARTTIME = 50
+  const SLOWSTARTTIME = 60
 
   const frame = second * 60
   const slowEndTime = frame - SLOWSTARTTIME
@@ -54,7 +54,7 @@ export default function useCountUp({ second, end, slowPoint }: UseCountUpType) {
   useEffect(() => {
     requestAnimationFrame(animate)
     return () => {
-      cancelAnimationFrame(requestRef.current!)
+      cancelAnimationFrame(requestRef.current)
     }
   }, [])
 
